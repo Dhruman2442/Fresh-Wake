@@ -18,13 +18,13 @@ class FreshWake extends StatelessWidget {
         gradientBackground:
             const LinearGradient(colors: [Colors.black, Colors.black]),
         image: Image.asset(
-          "asset/Clock.svg",
+          "asset/Clock.png",
         ),
-        photoSize: 150.0,
+        photoSize: 146.0,
         seconds: 3,
         navigateAfterSeconds: LoginPage(),
-        loadingText: Text("GameScoop",
-            style: GoogleFonts.balooBhai2(color: Colors.white, fontSize: 50)),
+        loadingText: Text("Fresh Wake",
+            style: GoogleFonts.baloo2(color: Colors.white, fontSize: 50,fontWeight: FontWeight.bold)),
         loaderColor: Colors.transparent,
         backgroundColor: Colors.white,
       ),
