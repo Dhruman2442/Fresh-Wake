@@ -1,4 +1,3 @@
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -168,20 +167,21 @@ Widget Button1(
   );
 }
 
-Widget FloatactionBar() {
-  return FloatingActionButton(
-    backgroundColor: const Color(0xFF7C4DFF),
-    //Floating action button on Scaffold
-    onPressed: () {
-      //code to execute on button press
-    },
-    child: const Icon(
-      Icons.add,
-      size: 30,
-      color: const Color(0xFFFFFFFF),
+Widget AlarmCard(Color color) {
+  return Card(
+    child: Row(
+      children: [
+        CircleAvatar(
+          backgroundColor: color,
+          child: ImageWidget("asset/Alarm Bell.png", 100, 100),
+        ),
+        Column(
+          children: [
+            Text("Alarm"),
+            Text("Set Alarm"),
+          ],
+        ),
+      ],
     ),
-    //icon inside button
   );
 }
-
-

@@ -1,12 +1,23 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import "package:flutter/material.dart";
+import 'package:fresh_wake/Alarm/Alarm-Page.dart';
 import 'package:fresh_wake/Widgets.dart';
+import 'package:get_storage/get_storage.dart';
 
 List<double> WeekDaysCount = [54, 80, 100, 50, 60, 99, 70];
 List<String> WeekDays = ["M", "T", "W", "T", "F", "S", "S"];
 
-int _currentIndex = 0;
+final scaffoldState = GlobalKey<ScaffoldState>();
 
+TextEditingController PriceController = TextEditingController();
+TextEditingController BrandController = TextEditingController();
+
+TextEditingController NameController = TextEditingController();
+TextEditingController CategoryController = TextEditingController();
+int _currentIndex = 0;
+late String valueText;
+
+final userdata = GetStorage();
 bool _showAgentsContainer = true;
 bool _showNewsContainer = false;
 
@@ -20,7 +31,15 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         bottomNavigationBar: bottomNavBar(),
-        floatingActionButton: FloatactionBar(),
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: const Color(0xFF7C4DFF),
+          child: Icon(Icons.add),
+          onPressed: () {
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+              return AlarmPage();
+            }));
+          },
+        ),
         backgroundColor: Colors.black,
         body: SafeArea(
           child: SingleChildScrollView(
@@ -46,9 +65,18 @@ class _HomePageState extends State<HomePage> {
                   ),
                   Container(
                     padding: const EdgeInsets.only(right: 40, left: 33),
-                    child: TextStyle1("Saved Alarm", 16, Color(0xFFE7E3E3),
-                        FontWeight.w600, TextAlign.center, FontStyle.normal),
-                  )
+                    child: TextStyle1(
+                        "Saved Alarm",
+                        16,
+                        const Color(0xFFE7E3E3),
+                        FontWeight.w600,
+                        TextAlign.center,
+                        FontStyle.normal),
+                  ),
+                  Container(
+                    margin: EdgeInsets.all(10),
+                    child: CardListView(),
+                  ),
                 ],
               ),
             ),
@@ -107,7 +135,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget BarChart() {
-    return Container(
+    return SizedBox(
       height: 151,
       child: ListView.builder(
           shrinkWrap: true,
@@ -119,16 +147,16 @@ class _HomePageState extends State<HomePage> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Container(
-                    width: MediaQuery.of(context).size.width / 9,
+                    width: MediaQuery.of(context).size.width / 8.8,
                     alignment: Alignment.bottomCenter,
                     child: Container(
                       width: 13,
-                      margin: EdgeInsets.all(15),
+                      margin: const EdgeInsets.all(15),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           gradient: LinearGradient(
-                              begin: Alignment.topLeft,
-                              end: Alignment.bottomRight,
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
                               colors: [
                                 Colors.pink.shade900,
                                 Colors.deepPurple
@@ -144,6 +172,17 @@ class _HomePageState extends State<HomePage> {
                       FontWeight.w500, TextAlign.center, FontStyle.normal),
                 ]);
           }),
+    );
+  }
+
+  Widget CardListView() {
+    return ListView.builder(
+      physics: const BouncingScrollPhysics(),
+      shrinkWrap: true,
+      itemCount: cardList.length,
+      itemBuilder: (context, index) {
+        return cardList[index];
+      },
     );
   }
 

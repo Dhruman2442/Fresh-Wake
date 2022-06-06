@@ -17,6 +17,8 @@ dependencies:
   splashscreen:
   syncfusion_flutter_charts:
   curved_navigation_bar:
+  get:
+  get_storage:
 
 
 dev_dependencies:
