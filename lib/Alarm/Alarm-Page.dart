@@ -3,6 +3,9 @@ import 'package:fresh_wake/Alarm/Home-page.dart';
 import 'package:fresh_wake/Widgets.dart';
 
 List<Widget> cardList = [];
+bool isSwitched = true;
+
+var textValue = 'Switch is OFF';
 
 class AlarmPage extends StatefulWidget {
   @override
@@ -10,6 +13,12 @@ class AlarmPage extends StatefulWidget {
 }
 
 class _AlarmPageState extends State<AlarmPage> {
+  @override
+  void initState() {
+    super.initState();
+    isSwitched = true;
+    textValue = 'Switch is ON';
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -100,27 +109,43 @@ class _AlarmPageState extends State<AlarmPage> {
 
   Widget _card() {
     return Card(
-      elevation: 20,
-      clipBehavior: Clip.hardEdge,
       color: Color(0xFF313334),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          CircleAvatar(
+      child: ListTile(
+          onTap: () {
+            toggleSwitch(!isSwitched);
+          },
+          leading: CircleAvatar(
             radius: 23,
             child: ImageWidget("asset/Alarm Bell.png", 46, 46),
           ),
-          Column(
-            children: [
-              TextStyle1("${userdata.read('Price')} | Drug", 20, Colors.white,
-                  FontWeight.w600, TextAlign.center, FontStyle.normal),
-              WeekDaysList(),
-            ],
-          ),
-        ],
-      ),
+          title: TextStyle1("${userdata.read('Price')} | Drug", 20,
+              Colors.white, FontWeight.w600, TextAlign.left, FontStyle.normal),
+          subtitle: WeekDaysList(),
+          trailing: Switch(
+            onChanged: toggleSwitch,
+            value: isSwitched,
+            activeColor: Colors.blue,
+            activeTrackColor: Colors.white,
+            inactiveThumbColor: Colors.white,
+            inactiveTrackColor: Colors.grey,
+          )),
     );
+  }
+
+  void toggleSwitch(bool value) {
+    if (isSwitched == false) {
+      setState(() {
+        isSwitched = true;
+        textValue = 'Switch Button is ON';
+      });
+      print('Switch Button is ON');
+    } else {
+      setState(() {
+        isSwitched = false;
+        textValue = 'Switch Button is OFF';
+      });
+      print('Switch Button is OFF');
+    }
   }
 
   Widget WeekDaysList() {

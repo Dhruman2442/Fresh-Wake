@@ -1,5 +1,7 @@
 import "package:flutter/material.dart";
+import 'package:fresh_wake/Alarm/Home-page.dart';
 import 'package:fresh_wake/Alarm/Login.dart';
+import 'package:fresh_wake/Alarm/Timer-Page.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:splashscreen/splashscreen.dart';
 
@@ -22,7 +24,7 @@ class FreshWake extends StatelessWidget {
         ),
         photoSize: 146.0,
         seconds: 3,
-        navigateAfterSeconds: LoginPage(),
+        navigateAfterSeconds: HomePage(),
         loadingText: Text("Fresh Wake",
             style: GoogleFonts.baloo2(color: Colors.white, fontSize: 50,fontWeight: FontWeight.bold)),
         loaderColor: Colors.transparent,

@@ -19,6 +19,8 @@ dependencies:
   curved_navigation_bar:
   get:
   get_storage:
+  stop_watch_timer:
+  flutter_timer_countdown:
 
 
 dev_dependencies:

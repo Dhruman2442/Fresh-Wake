@@ -33,7 +33,7 @@ class _HomePageState extends State<HomePage> {
         bottomNavigationBar: bottomNavBar(),
         floatingActionButton: FloatingActionButton(
           backgroundColor: const Color(0xFF7C4DFF),
-          child: Icon(Icons.add),
+          child: const Icon(Icons.add),
           onPressed: () {
             Navigator.of(context).push(MaterialPageRoute(builder: (context) {
               return AlarmPage();
@@ -74,7 +74,7 @@ class _HomePageState extends State<HomePage> {
                         FontStyle.normal),
                   ),
                   Container(
-                    margin: EdgeInsets.all(10),
+                    margin: const EdgeInsets.all(10),
                     child: CardListView(),
                   ),
                 ],
