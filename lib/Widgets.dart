@@ -20,13 +20,13 @@ Widget Space(double height) {
   );
 }
 
-Widget ImageWidget(String imagePath, double width, double height) {
-  return Image.asset(
+Widget ImageWidget(String imagePath, double width, double height,VoidCallback call) {
+  return GestureDetector(onTap: call, child: Image.asset(
     color: Colors.white,
     imagePath,
     width: width,
     height: height,
-  );
+  ),);
 }
 
 Widget Textfield1(
@@ -74,6 +74,7 @@ Widget Textfield1(
 }
 
 Widget TextfieldPassword(
+    TextEditingController controller,
     String ltext,
     String htext,
     double fontSize,
@@ -85,6 +86,7 @@ Widget TextfieldPassword(
     VoidCallback onclick,
     bool obscureText) {
   return TextField(
+    controller: controller,
     style: TextStyle(color: Colors.white, fontSize: fontSize),
     obscureText: obscureText,
     decoration: InputDecoration(
@@ -129,6 +131,55 @@ Widget TextfieldPassword(
   );
 }
 
+Widget TextfieldAlarmSet(
+  TextEditingController controller,
+  String ltext,
+  String htext,
+  double fontSize,
+  Color color,
+  FontWeight fontWeight,
+  TextAlign textAlign,
+  FontStyle fontStyle,
+  String image,
+  VoidCallback onclick(dynamic),
+) {
+  return TextField(
+    controller: controller,
+    style: TextStyle(color: Colors.white, fontSize: fontSize),
+    decoration: InputDecoration(
+      fillColor: const Color(0xBF484848),
+      filled: true,
+      enabledBorder: const OutlineInputBorder(
+        borderRadius: BorderRadius.all(Radius.circular(10)),
+      ),
+      border: const OutlineInputBorder(
+        borderRadius: BorderRadius.all(Radius.circular(10)),
+      ),
+      labelText: ltext,
+      hintText: htext,
+      labelStyle: TextStyle(
+          fontSize: fontSize,
+          color: color,
+          fontWeight: fontWeight,
+          fontStyle: fontStyle),
+      hintStyle: TextStyle(
+          fontSize: fontSize,
+          color: color,
+          fontWeight: fontWeight,
+          fontStyle: fontStyle),
+      prefixIcon: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Image.asset(
+          image,
+          width: 24,
+          height: 24,
+          fit: BoxFit.fill,
+        ),
+      ),
+    ),
+  );
+}
+
 Widget TextButton1(
     VoidCallback onpressed,
     String text,
@@ -163,25 +214,6 @@ Widget Button1(
       color: color,
       child: TextStyle1(
           text, size, Colors.white, fontWeight, textAlign, fontStyle),
-    ),
-  );
-}
-
-Widget AlarmCard(Color color) {
-  return Card(
-    child: Row(
-      children: [
-        CircleAvatar(
-          backgroundColor: color,
-          child: ImageWidget("asset/Alarm Bell.png", 100, 100),
-        ),
-        Column(
-          children: [
-            Text("Alarm"),
-            Text("Set Alarm"),
-          ],
-        ),
-      ],
     ),
   );
 }

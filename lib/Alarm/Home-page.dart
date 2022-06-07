@@ -1,6 +1,7 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import "package:flutter/material.dart";
 import 'package:fresh_wake/Alarm/Alarm-Page.dart';
+import 'package:fresh_wake/Alarm/Profile-Page.dart';
 import 'package:fresh_wake/Widgets.dart';
 import 'package:get_storage/get_storage.dart';
 
@@ -53,7 +54,12 @@ class _HomePageState extends State<HomePage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        ImageWidget("asset/Profile.png", 53, 53),
+                        ImageWidget("asset/Profile.png", 53, 53, () {
+                          Navigator.of(context)
+                              .push(MaterialPageRoute(builder: (context) {
+                            return ProfilePage();
+                          }));
+                        }),
                         Container(
                           child: DisplayWidget(),
                         )
@@ -91,7 +97,7 @@ class _HomePageState extends State<HomePage> {
           color: Colors.black,
           child: Row(
             children: [
-              ImageWidget("asset/Night.png", 50, 50),
+              ImageWidget("asset/Night.png", 50, 50, () {}),
               Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,

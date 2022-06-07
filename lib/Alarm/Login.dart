@@ -19,33 +19,34 @@ class _LoginPageState extends State<LoginPage> {
         child: SingleChildScrollView(
           child: Center(
             child: Container(
-              padding: EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
               child: Column(
                 children: [
                   Space(80),
-                  ImageWidget("asset/Freshwakelogo.png", 112, 79),
+                  ImageWidget("asset/Freshwakelogo.png", 112, 79,(){}),
                   Space(50),
-                  TextStyle1("Welcome aboard", 31, Color(0xFFE7E3E3),
+                  TextStyle1("Welcome aboard", 31, const Color(0xFFE7E3E3),
                       FontWeight.w700, TextAlign.center, FontStyle.normal),
                   Space(30),
-                  TextStyle1("Please Login to continue", 20, Color(0xFFE7E3E3),
+                  TextStyle1("Please Login to continue", 20, const Color(0xFFE7E3E3),
                       FontWeight.w500, TextAlign.center, FontStyle.normal),
                   Space(60),
                   Textfield1(
                       "Email",
                       "Enter your email",
                       18,
-                      Color(0xFFE7E3E3),
+                      const Color(0xFFE7E3E3),
                       FontWeight.w500,
                       TextAlign.center,
                       FontStyle.normal,
                       "asset/Email.png"),
                   Space(20),
                   TextfieldPassword(
+                    passwordController,
                       "Password",
                       "Enter your password",
                       18,
-                      Color(0xFFE7E3E3),
+                      const Color(0xFFE7E3E3),
                       FontWeight.w500,
                       TextAlign.center,
                       FontStyle.normal,
@@ -68,7 +69,7 @@ class _LoginPageState extends State<LoginPage> {
                       },
                       "Forgot Password?",
                       14,
-                      Color(0xFFE7E3E3),
+                      const Color(0xFFE7E3E3),
                       FontWeight.w500,
                       TextAlign.right,
                       FontStyle.normal,
@@ -78,7 +79,7 @@ class _LoginPageState extends State<LoginPage> {
                   Button1(
                       "Login",
                       18,
-                      Color(0xFF6265C3),
+                      const Color(0xFF6265C3),
                       FontWeight.w500,
                       TextAlign.center,
                       FontStyle.normal, () {
@@ -89,7 +90,7 @@ class _LoginPageState extends State<LoginPage> {
                     },
                       context),
                   Space(20),
-                  TextStyle1("Or", 20, Color(0xFFE7E3E3), FontWeight.w600,
+                  TextStyle1("Or", 20, const Color(0xFFE7E3E3), FontWeight.w600,
                       TextAlign.center, FontStyle.normal),
                   Space(20),
                   Stack(
@@ -97,7 +98,7 @@ class _LoginPageState extends State<LoginPage> {
                       Button1(
                           "Login with Google",
                           18,
-                          Color(0xFF383838),
+                          const Color(0xFF383838),
                           FontWeight.w500,
                           TextAlign.center,
                           FontStyle.normal,
@@ -115,7 +116,7 @@ class _LoginPageState extends State<LoginPage> {
                       TextStyle1(
                           "Don't have an account?",
                           14,
-                          Color(0xFFE7E3E3),
+                          const Color(0xFFE7E3E3),
                           FontWeight.w300,
                           TextAlign.center,
                           FontStyle.normal),
@@ -126,7 +127,7 @@ class _LoginPageState extends State<LoginPage> {
                         },
                         "Sign Up",
                         14,
-                        Color(0xFF6265C3),
+                        const Color(0xFF6265C3),
                         FontWeight.w500,
                         TextAlign.start,
                         FontStyle.normal,

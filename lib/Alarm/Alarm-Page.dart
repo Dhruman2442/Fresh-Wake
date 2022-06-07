@@ -116,7 +116,7 @@ class _AlarmPageState extends State<AlarmPage> {
           },
           leading: CircleAvatar(
             radius: 23,
-            child: ImageWidget("asset/Alarm Bell.png", 46, 46),
+            child: ImageWidget("asset/Alarm Bell.png", 46, 46,(){}),
           ),
           title: TextStyle1("${userdata.read('Price')} | Drug", 20,
               Colors.white, FontWeight.w600, TextAlign.left, FontStyle.normal),

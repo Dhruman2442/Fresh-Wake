@@ -4,6 +4,8 @@ import 'package:fresh_wake/Alarm/Login.dart';
 import 'package:fresh_wake/Widgets.dart';
 
 bool _isObscure = false;
+final passwordController = TextEditingController();
+final emailController = TextEditingController();
 
 class SignupPage extends StatefulWidget {
   @override
@@ -23,7 +25,7 @@ class _SignupPageState extends State<SignupPage> {
               child: Column(
                 children: [
                   Space(80),
-                  ImageWidget("asset/Freshwakelogo.png", 112, 79),
+                  ImageWidget("asset/Freshwakelogo.png", 112, 79,(){}),
                   Space(50),
                   TextStyle1("Sign Up", 31, Color(0xFFE7E3E3), FontWeight.w700,
                       TextAlign.center, FontStyle.normal),
@@ -47,6 +49,7 @@ class _SignupPageState extends State<SignupPage> {
                       "asset/Email.png"),
                   Space(20),
                   TextfieldPassword(
+                    passwordController,
                       "Password",
                       "Enter your password",
                       18,
