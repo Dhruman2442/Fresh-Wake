@@ -18,58 +18,70 @@ class _ProfilePageState extends State<ProfilePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Row(
-                children: [
-                  CircleAvatar(
-                    backgroundColor: Colors.white30,
-                    child: IconButton(
-                      icon: const Icon(
-                        Icons.arrow_back_ios,
-                        color: Color(0xFFFFFFFF),
-                      ),
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                    ),
-                  ),
-                  TextStyle1(
-                    "Profile",
-                    20,
-                    const Color(0xFFFFFFFF),
-                    FontWeight.w600,
-                    TextAlign.center,
-                    FontStyle.normal,
-                  ),
+          Row(
+          children: [
+          CircleAvatar(
+          backgroundColor: Colors.white30,
+            child: IconButton(
+              icon: const Icon(
+                Icons.arrow_back_ios,
+                color: Color(0xFFFFFFFF),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ),
+          TextStyle1(
+            "Profile",
+            20,
+            const Color(0xFFFFFFFF),
+            FontWeight.w600,
+            TextAlign.center,
+            FontStyle.normal,
+          ),
+          ],
+        ),
+        Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Container(
+              color: Colors.white,
+              height: MediaQuery
+                  .of(context)
+                  .size
+                  .width * 0.85,
+
+              alignment: Alignment.bottomCenter,
+              child: Stack(
+                  children: [
+                  ImageWidget("asset/Profile.png", 93, 93, () {}),
+              Container(
+                color: Color(0xFF000000).withOpacity(0.5),
+                height: MediaQuery
+                    .of(context)
+                    .size
+                    .width * 0.85,
+                child: Column(
+                    children: [
+
+                Container(
+                padding: const EdgeInsets.all(10),
+                child: TextStyle1(
+                    "Dhruman", 50, Color(0xFF000000), FontWeight.w600,
+                    TextAlign.center, FontStyle.normal),),
                 ],
               ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Container(
-                    color: Colors.white,
-                    height: MediaQuery.of(context).size.width * 0.85,
-
-                    alignment: Alignment.bottomCenter,
-                    child: Stack(
-                      children: [
-                        ImageWidget("asset/Profile.png", 93, 93, () {}),
-                        Container(
-                          color: Color(0xFF000000).withOpacity(0.5),
-                          height: MediaQuery.of(context).size.width * 0.85,
-                          child: Column(
-                            children: [],
-                          ),
-                        )
-                      ],
-                    ),
-                  )
-                ],
-              )
-            ],
-          ),
+            )
+          ],
         ),
-      ),
+      )
+      ],
+    )],
+    ),
+    ),
+    ),
     );
-  }
+    }
 }
