@@ -49,11 +49,13 @@ class _ProfilePageState extends State<ProfilePage> {
                   Container(
                     color: Colors.white,
                     height: MediaQuery.of(context).size.width * 0.85,
+
                     alignment: Alignment.bottomCenter,
                     child: Stack(
                       children: [
                         ImageWidget("asset/Profile.png", 93, 93, () {}),
                         Container(
+                          color: Color(0xFF000000).withOpacity(0.5),
                           height: MediaQuery.of(context).size.width * 0.85,
                           child: Column(
                             children: [],
