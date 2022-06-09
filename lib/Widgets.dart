@@ -20,13 +20,16 @@ Widget Space(double height) {
   );
 }
 
-Widget ImageWidget(String imagePath, double width, double height,VoidCallback call) {
-  return GestureDetector(onTap: call, child: Image.asset(
-    color: Colors.white,
-    imagePath,
-    width: width,
-    height: height,
-  ),);
+Widget ImageWidget(
+    String imagePath, double width, double height, VoidCallback call) {
+  return GestureDetector(
+    onTap: call,
+    child: Image.asset(
+      imagePath,
+      width: width,
+      height: height,
+    ),
+  );
 }
 
 Widget Textfield1(
