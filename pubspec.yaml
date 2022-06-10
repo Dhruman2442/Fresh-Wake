@@ -21,6 +21,7 @@ dependencies:
   get_storage:
   stop_watch_timer:
   flutter_timer_countdown:
+  intl:
 
 
 dev_dependencies:

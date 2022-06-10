@@ -1,7 +1,5 @@
 import "package:flutter/material.dart";
 import 'package:fresh_wake/Alarm/Home-page.dart';
-import 'package:fresh_wake/Alarm/Login.dart';
-import 'package:fresh_wake/Alarm/Timer-Page.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:splashscreen/splashscreen.dart';
 

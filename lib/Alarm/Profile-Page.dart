@@ -57,10 +57,11 @@ class _ProfilePageState extends State<ProfilePage> {
                     children: [
                       Container(
                         height: MediaQuery.of(context).size.height * 0.9,
-                        padding: EdgeInsets.only(top: 40),
+                        padding: const EdgeInsets.only(top: 40),
                         child: Container(
-                            padding: EdgeInsets.only(top: 100, bottom: 20),
-                            decoration: BoxDecoration(
+                            padding:
+                                const EdgeInsets.only(top: 100, bottom: 20),
+                            decoration: const BoxDecoration(
                               color: Color(0xFF222424),
                               borderRadius: BorderRadius.only(
                                 topRight: Radius.circular(40),
@@ -84,7 +85,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                             FontStyle.normal),
                                       ),
                                       Container(
-                                        color: Color(0xFF6D6D6D),
+                                        color: const Color(0xFF6D6D6D),
                                         child: SizedBox(
                                           height: 0.5,
                                           width: MediaQuery.of(context)
@@ -103,7 +104,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             child: TextStyle1(
                                 "Name",
                                 18,
-                                Color(0xFFFFFFFF),
+                                const Color(0xFFFFFFFF),
                                 FontWeight.w600,
                                 TextAlign.center,
                                 FontStyle.normal),
