@@ -1,10 +1,12 @@
+import 'package:analog_clock/analog_clock.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:fresh_wake/Alarm/Home-page.dart';
 import 'package:fresh_wake/Widgets.dart';
 
 List<Widget> cardList = [];
 bool isSwitched = true;
-
+DateTime dateTime = DateTime.now();
 var textValue = 'Switch is OFF';
 
 class AlarmPage extends StatefulWidget {
@@ -14,56 +16,96 @@ class AlarmPage extends StatefulWidget {
 
 class _AlarmPageState extends State<AlarmPage> {
   @override
-  void initState() {
-    super.initState();
-    isSwitched = true;
-    textValue = 'Switch is ON';
-  }
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFF000000),
       body: Column(
         children: [
+          Container(
+            padding: EdgeInsets.all(10),
+            height: 190,
+            width: MediaQuery.of(context).size.width,
+            child: AnalogClock(
+              decoration: BoxDecoration(
+                  border: Border.all(width: 10, color: Color(0xFF1A1A1A)),
+                  color: Color(0xFF1A1A1A),
+                  shape: BoxShape.circle),
+              // decoration
+              isLive: false,
+              hourHandColor: Colors.transparent,
+              minuteHandColor: Colors.transparent,
+              showSecondHand: false,
+              numberColor: Colors.white,
+
+              showNumbers: true,
+              textScaleFactor: 2.2,
+              showTicks: false,
+              showDigitalClock: false,
+              digitalClockColor: Colors.white,
+              showAllNumbers: true,
+              datetime: dateTime,
+            ),
+          ),
           TextStyle1('Product Details', 20, Colors.black, FontWeight.bold,
               TextAlign.center, FontStyle.normal),
-          Container(
-            margin: const EdgeInsets.all(10),
-            child: TextField(
-              keyboardType: TextInputType.name,
-              onChanged: (value) {
-                setState(() {
-                  valueText = value;
-                });
-              },
-              controller: NameController,
-              decoration: const InputDecoration(hintText: "Name"),
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.all(10),
-            child: TextField(
-              keyboardType: TextInputType.name,
-              onChanged: (value) {
-                setState(() {
-                  valueText = value;
-                });
-              },
-              controller: BrandController,
-              decoration: const InputDecoration(hintText: "Brand"),
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.all(10),
-            child: TextField(
-              keyboardType: TextInputType.number,
-              onChanged: (value) {
-                setState(() {
-                  valueText = value;
-                });
-              },
-              controller: PriceController,
-              decoration: const InputDecoration(hintText: "Price"),
-            ),
+          Row(
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                    border: Border.all(color: Color(0xFFFFFFFF)),
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    color: Color(0xFFFFFFFF)),
+                width: MediaQuery.of(context).size.width / 8,
+                margin: const EdgeInsets.all(10),
+                child: TextField(
+                  inputFormatters: [
+                    LengthLimitingTextInputFormatter(2),
+                  ],
+                  textAlign: TextAlign.center,
+                  keyboardType: TextInputType.name,
+                  onChanged: (value) {
+                    setState(() {
+                      valueText = value;
+                    });
+                  },
+                  controller: NameController,
+                  decoration: const InputDecoration(
+                    hintText: "HH",
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                decoration: BoxDecoration(
+                    border: Border.all(color: Color(0xFFFFFFFF)),
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    color: Color(0xFFFFFFFF)),
+                width: MediaQuery.of(context).size.width / 8,
+                margin: const EdgeInsets.all(10),
+                child: TextField(
+                  inputFormatters: [
+                    LengthLimitingTextInputFormatter(2),
+                  ],
+                  textAlign: TextAlign.center,
+                  keyboardType: TextInputType.number,
+                  onChanged: (value) {
+                    setState(() {
+                      valueText = value;
+                    });
+                  },
+                  controller: BrandController,
+                  decoration: const InputDecoration(
+                    hintText: "MM",
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                    ),
+                  ),
+                ),
+              ),
+
+            ],
           ),
           ElevatedButton(
             child: TextStyle1('Save', 20, Colors.black, FontWeight.bold,
@@ -116,7 +158,7 @@ class _AlarmPageState extends State<AlarmPage> {
           },
           leading: CircleAvatar(
             radius: 23,
-            child: ImageWidget("asset/Alarm Bell.png", 46, 46,(){}),
+            child: ImageWidget("asset/Alarm Bell.png", 46, 46, () {}),
           ),
           title: TextStyle1("${userdata.read('Price')} | Drug", 20,
               Colors.white, FontWeight.w600, TextAlign.left, FontStyle.normal),

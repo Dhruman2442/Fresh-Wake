@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 Widget TextStyle1(String text, double fontSize, Color color,
@@ -135,48 +136,33 @@ Widget TextfieldPassword(
 }
 
 Widget TextfieldAlarmSet(
-  TextEditingController controller,
-  String ltext,
-  String htext,
-  double fontSize,
+  BuildContext context,
   Color color,
-  FontWeight fontWeight,
-  TextAlign textAlign,
-  FontStyle fontStyle,
-  String image,
-  VoidCallback onclick(dynamic),
+  TextEditingController controller,
+  VoidCallback onclick,
 ) {
-  return TextField(
-    controller: controller,
-    style: TextStyle(color: Colors.white, fontSize: fontSize),
-    decoration: InputDecoration(
-      fillColor: const Color(0xBF484848),
-      filled: true,
-      enabledBorder: const OutlineInputBorder(
-        borderRadius: BorderRadius.all(Radius.circular(10)),
-      ),
-      border: const OutlineInputBorder(
-        borderRadius: BorderRadius.all(Radius.circular(10)),
-      ),
-      labelText: ltext,
-      hintText: htext,
-      labelStyle: TextStyle(
-          fontSize: fontSize,
-          color: color,
-          fontWeight: fontWeight,
-          fontStyle: fontStyle),
-      hintStyle: TextStyle(
-          fontSize: fontSize,
-          color: color,
-          fontWeight: fontWeight,
-          fontStyle: fontStyle),
-      prefixIcon: Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: Image.asset(
-          image,
-          width: 24,
-          height: 24,
-          fit: BoxFit.fill,
+  return Container(
+    decoration: BoxDecoration(
+        border: Border.all(color: color),
+        borderRadius: const BorderRadius.all(Radius.circular(10)),
+        color: color),
+    width: MediaQuery.of(context).size.width / 8,
+    margin: const EdgeInsets.all(10),
+    child: TextField(
+      inputFormatters: [
+        LengthLimitingTextInputFormatter(2),
+      ],
+      textAlign: TextAlign.center,
+      keyboardType: TextInputType.number,
+      maxLengthEnforcement: MaxLengthEnforcement.values[1],
+      onChanged: (value) {
+        onclick();
+      },
+      controller: controller,
+      decoration: const InputDecoration(
+        hintText: "SS",
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(10)),
         ),
       ),
     ),
@@ -218,30 +204,5 @@ Widget Button1(
       child: TextStyle1(
           text, size, Colors.white, fontWeight, textAlign, fontStyle),
     ),
-  );
-}
-class ButtonWidget extends StatelessWidget {
-  final VoidCallback onClicked;
-
-  const ButtonWidget({
-    Key? key,
-    required this.onClicked,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) => ElevatedButton(
-    style: ElevatedButton.styleFrom(minimumSize: Size(100, 42)),
-    child: Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Icon(Icons.more_time, size: 28),
-        const SizedBox(width: 8),
-        Text(
-          'Show Picker',
-          style: TextStyle(fontSize: 20),
-        ),
-      ],
-    ),
-    onPressed: onClicked,
   );
 }
