@@ -1,31 +1,21 @@
 import 'dart:async';
 
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:flutter/cupertino.dart';
+
 import "package:flutter/material.dart";
 import 'package:fresh_wake/Alarm/Alarm-Page.dart';
 import 'package:fresh_wake/Alarm/Profile-Page.dart';
 import 'package:fresh_wake/Widgets.dart';
-import 'package:get_storage/get_storage.dart';
 
-List<double> WeekDaysCount = [54, 80, 100, 50, 60, 99, 70];
-List<String> WeekDays = ["M", "T", "W", "T", "F", "S", "S"];
-
-final scaffoldState = GlobalKey<ScaffoldState>();
-
-TextEditingController PriceController = TextEditingController();
-TextEditingController BrandController = TextEditingController();
-
-TextEditingController NameController = TextEditingController();
-TextEditingController CategoryController = TextEditingController();
 int _currentIndex = 0;
 late String valueText;
 
-final userdata = GetStorage();
 bool _showAgentsContainer = true;
 bool _showNewsContainer = false;
 
 class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
+
   @override
   State<StatefulWidget> createState() => _HomePageState();
 }
@@ -36,13 +26,19 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // appBar: AppBar(
+      //   title: Text("Fresh Wake"),
+      //   centerTitle: true,
+      //   backgroundColor: Color(0xFF1A1A1A),
+      //   elevation: 0,
+      // ),
       bottomNavigationBar: bottomNavBar(),
       floatingActionButton: FloatingActionButton(
         backgroundColor: const Color(0xFF7C4DFF),
         child: const Icon(Icons.add),
         onPressed: () {
           Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-            return AlarmPage();
+            return const AlarmPage();
           }));
         },
       ),
@@ -57,7 +53,8 @@ class _HomePageState extends State<HomePage> {
                 child: HomePageWidget(),
               ),
               Visibility(
-                  child: StopWatchTimerPage(), visible: _showNewsContainer),
+                  visible: _showNewsContainer,
+                  child: StopWatchTimerPage()),
             ],
           )),
         ),

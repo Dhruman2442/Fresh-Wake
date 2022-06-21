@@ -4,8 +4,6 @@ import 'package:fresh_wake/Alarm/Login.dart';
 import 'package:fresh_wake/Widgets.dart';
 
 bool _isObscure = false;
-final passwordController = TextEditingController();
-final emailController = TextEditingController();
 
 class SignupPage extends StatefulWidget {
   @override
@@ -25,7 +23,7 @@ class _SignupPageState extends State<SignupPage> {
               child: Column(
                 children: [
                   Space(80),
-                  ImageWidget("asset/Freshwakelogo.png", 112, 79,(){}),
+                  ImageWidget("asset/Freshwakelogo.png", 112, 79, () {}),
                   Space(50),
                   TextStyle1("Sign Up", 31, Color(0xFFE7E3E3), FontWeight.w700,
                       TextAlign.center, FontStyle.normal),
@@ -39,6 +37,7 @@ class _SignupPageState extends State<SignupPage> {
                       FontStyle.normal),
                   Space(60),
                   Textfield1(
+                      EmailController,
                       "Email",
                       "Enter your email",
                       18,
@@ -49,7 +48,7 @@ class _SignupPageState extends State<SignupPage> {
                       "asset/Email.png"),
                   Space(20),
                   TextfieldPassword(
-                    passwordController,
+                      passwordController,
                       "Password",
                       "Enter your password",
                       18,
@@ -61,22 +60,13 @@ class _SignupPageState extends State<SignupPage> {
                     setState(() {
                       _isObscure = !_isObscure;
                     });
-                  },
-                      !_isObscure),
+                  }, !_isObscure),
                   Space(45),
-                  Button1(
-                      "Signup",
-                      18,
-                      Color(0xFF6265C3),
-                      FontWeight.w500,
-                      TextAlign.center,
-                      FontStyle.normal, () {
-                    Navigator
-                        .of(context)
-                        .push(MaterialPageRoute(
-                        builder: (contex) => HomePage()));
-                    },
-                      context),
+                  Button1("Signup", 18, Color(0xFF6265C3), FontWeight.w500,
+                      TextAlign.center, FontStyle.normal, () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (contex) => HomePage()));
+                  }, context),
                   Space(20),
                   TextStyle1("Or", 20, Color(0xFFE7E3E3), FontWeight.w600,
                       TextAlign.center, FontStyle.normal),
@@ -90,7 +80,7 @@ class _SignupPageState extends State<SignupPage> {
                           FontWeight.w500,
                           TextAlign.center,
                           FontStyle.normal,
-                              () {},
+                          () {},
                           context),
                       // Container(,
                       //   child: Image.asset("asset/Google.png"),
@@ -109,7 +99,7 @@ class _SignupPageState extends State<SignupPage> {
                           TextAlign.center,
                           FontStyle.normal),
                       TextButton1(
-                            () {
+                        () {
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => LoginPage()));
                         },

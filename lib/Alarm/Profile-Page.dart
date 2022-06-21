@@ -98,7 +98,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                       Column(
                         children: [
-                          ImageWidget("asset/Profile.png", 100, 100, () {}),
+                          ImageWidget("asset/Profile.png", 150, 100, () {}),
                           Space(1),
                           Container(
                             child: TextStyle1(

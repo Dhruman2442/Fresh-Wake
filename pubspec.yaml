@@ -22,7 +22,8 @@ dependencies:
   stop_watch_timer:
   flutter_timer_countdown:
   intl:
-  analog_clock: 
+  analog_clock:
+  lottie:
 
 
 dev_dependencies:

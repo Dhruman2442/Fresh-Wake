@@ -4,7 +4,7 @@ import 'package:fresh_wake/Alarm/Signup.dart';
 import 'package:fresh_wake/Widgets.dart';
 
 bool _isObscure = true;
-
+final EmailController= TextEditingController();
 class LoginPage extends StatefulWidget {
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -32,6 +32,7 @@ class _LoginPageState extends State<LoginPage> {
                       FontWeight.w500, TextAlign.center, FontStyle.normal),
                   Space(60),
                   Textfield1(
+                    EmailController,
                       "Email",
                       "Enter your email",
                       18,

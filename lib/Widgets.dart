@@ -1,6 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+final alarmTaskController = TextEditingController();
+final passwordController = TextEditingController();
+final nameController = TextEditingController();
+
+final userdata = GetStorage();
+
+List<double> WeekDaysCount = [54, 100, 20, 50, 60, 99, 70];
+List<String> WeekDays = ["M", "T", "W", "T", "F", "S", "S"];
 
 Widget TextStyle1(String text, double fontSize, Color color,
     FontWeight fontWeight, TextAlign textAlign, FontStyle fontStyle) {
@@ -34,6 +44,7 @@ Widget ImageWidget(
 }
 
 Widget Textfield1(
+    TextEditingController controller,
     String ltext,
     String htext,
     double fontSize,
@@ -43,6 +54,7 @@ Widget Textfield1(
     FontStyle fontStyle,
     String image) {
   return TextField(
+    controller: controller,
     style: TextStyle(color: color, fontSize: fontSize),
     decoration: InputDecoration(
         fillColor: const Color(0xBF484848),
