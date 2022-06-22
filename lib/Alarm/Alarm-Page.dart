@@ -24,107 +24,130 @@ class _AlarmPageState extends State<AlarmPage> {
       body: SafeArea(
         child: Column(
           children: [
-            TextStyle1("Set Alarm", 24, Color(0xFFFFFFFF), FontWeight.w600,
-                TextAlign.center, FontStyle.normal),
-            GestureDetector(
-              onTap: () {
-                _selectTime(context);
-              },
-              child: Column(
-                children: [
-                  Container(
-                    padding: const EdgeInsets.all(10),
-                    height: 190,
-                    width: MediaQuery.of(context).size.width,
-                    child: AnalogClock(
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                              width: 10, color: const Color(0xFF1A1A1A)),
-                          color: const Color(0xFF1A1A1A),
-                          shape: BoxShape.circle),
-                      // decoration
-                      isLive: false,
-                      hourHandColor: Colors.white,
-                      minuteHandColor: Colors.white,
-                      showSecondHand: false,
-                      numberColor: Colors.white,
-                      showNumbers: true,
-                      textScaleFactor: 2.2,
-                      showTicks: false,
-                      showDigitalClock: false,
-                      digitalClockColor: Colors.white,
-                      showAllNumbers: true,
-                    ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        margin: EdgeInsets.only(right: 10),
-                        padding: EdgeInsets.all(15),
-                        decoration: BoxDecoration(
-                          color: Color(0xFF1A1A1A),
-                          border: Border.all(
-                            width: 1,
-                            color: const Color(0xFF1A1A1A),
-                          ),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: TextStyle1(
-                            '${selectedTime.hour}',
-                            20,
-                            Colors.white,
-                            FontWeight.bold,
-                            TextAlign.center,
-                            FontStyle.normal),
-                      ),
-                      TextStyle1(":", 25, Color(0xFFFFFFFF), FontWeight.w600,
-                          TextAlign.center, FontStyle.normal),
-                      Container(
-                        margin: EdgeInsets.only(left: 10),
-                        padding: EdgeInsets.all(15),
-                        decoration: BoxDecoration(
-                          color: Color(0xFF1A1A1A),
-                          border: Border.all(
-                            width: 1,
-                            color: const Color(0xFF1A1A1A),
-                          ),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: TextStyle1(
-                            '${selectedTime.minute}',
-                            20,
-                            Colors.white,
-                            FontWeight.bold,
-                            TextAlign.center,
-                            FontStyle.normal),
-                      )
-                    ],
-                  )
-                ],
-              ),
-            ),
+            TextStyle1("Set Alarm", 24, const Color(0xFFFFFFFF),
+                FontWeight.w600, TextAlign.center, FontStyle.normal),
             Space(20),
             Container(
-              margin: EdgeInsets.only(left: 10, right: 10),
+              margin: const EdgeInsets.only(left: 10, right: 10),
               child: Textfield1(
                   alarmTaskController,
                   "Alarm Name",
                   "Task",
                   20,
-                  Color(0xFFFFFFFF),
+                  const Color(0xFFFFFFFF),
                   FontWeight.w600,
                   TextAlign.center,
                   FontStyle.normal,
                   "asset/Alarm Bell.png"),
             ),
-            Container(
-              height: 200,
-              width: 200,
-              child: Lottie.network(
-                "https://assets7.lottiefiles.com/packages/lf20_nxwy841x.json",
+            Space(20),
+            GestureDetector(
+              onTap: () {
+                _selectTime(context);
+              },
+              child: Card(
+                color: Color(0xFFFFFFF),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15.0),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      height: 190,
+                      width: 190,
+                      child: AnalogClock(
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                                width: 10, color: const Color(0xFF1A1A1A)),
+                            color: const Color(0xFF1A1A1A),
+                            shape: BoxShape.circle),
+                        // decoration
+                        isLive: false,
+                        hourHandColor: Colors.white,
+                        minuteHandColor: Colors.white,
+                        showSecondHand: false,
+                        numberColor: Colors.white,
+                        showNumbers: true,
+                        textScaleFactor: 2.2,
+                        showTicks: false,
+                        showDigitalClock: false,
+                        digitalClockColor: Colors.white,
+                        showAllNumbers: true,
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Row(
+                          children: [
+                            Container(
+                              margin: const EdgeInsets.only(right: 10),
+                              padding: const EdgeInsets.all(15),
+                              decoration: BoxDecoration(
+                                color: const Color(0xFF1A1A1A),
+                                border: Border.all(
+                                  width: 1,
+                                  color: const Color(0xFF1A1A1A),
+                                ),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: TextStyle1(
+                                  '${selectedTime.hour}',
+                                  20,
+                                  Colors.white,
+                                  FontWeight.bold,
+                                  TextAlign.center,
+                                  FontStyle.normal),
+                            ),
+                          ],
+                        ),
+                        TextStyle1(
+                            ":",
+                            25,
+                            const Color(0xFFFFFFFF),
+                            FontWeight.w600,
+                            TextAlign.center,
+                            FontStyle.normal),
+                        Column(
+                          children: [
+                            Container(
+                              margin: const EdgeInsets.only(left: 10),
+                              padding: const EdgeInsets.all(15),
+                              decoration: BoxDecoration(
+                                color: const Color(0xFF1A1A1A),
+                                border: Border.all(
+                                  width: 1,
+                                  color: const Color(0xFF1A1A1A),
+                                ),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: TextStyle1(
+                                  '${selectedTime.minute}',
+                                  20,
+                                  Colors.white,
+                                  FontWeight.bold,
+                                  TextAlign.center,
+                                  FontStyle.normal),
+                            ),
+                          ],
+                        )
+                      ],
+                    )
+                  ],
+                ),
               ),
             ),
+            Space(20),
+
+            // SizedBox(
+            //   height: 200,
+            //   width: 200,
+            //   child: Lottie.network(
+            //     "https://assets5.lottiefiles.com/packages/lf20_3w5swlwn.json",
+            //   ),
+            // ),
             ElevatedButton(
               child: TextStyle1('Save', 20, Colors.black, FontWeight.bold,
                   TextAlign.center, FontStyle.normal),
@@ -186,7 +209,8 @@ class _AlarmPageState extends State<AlarmPage> {
               FontStyle.normal),
           subtitle: WeekDaysList(),
           trailing: Switch(
-            onChanged: toggleSwitch,
+            splashRadius: 0.5,
+            onChanged: (value) {},
             value: isSwitched,
             activeColor: Colors.blue,
             activeTrackColor: Colors.white,

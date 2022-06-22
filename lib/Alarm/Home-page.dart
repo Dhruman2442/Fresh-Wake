@@ -9,7 +9,7 @@ import 'package:fresh_wake/Widgets.dart';
 
 int _currentIndex = 0;
 late String valueText;
-
+final Listkey = Key("ListKey");
 bool _showAgentsContainer = true;
 bool _showNewsContainer = false;
 
@@ -22,6 +22,8 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   DateTime dateTime = DateTime.now();
+
+  get myString => null;
 
   @override
   Widget build(BuildContext context) {
@@ -53,8 +55,7 @@ class _HomePageState extends State<HomePage> {
                 child: HomePageWidget(),
               ),
               Visibility(
-                  visible: _showNewsContainer,
-                  child: StopWatchTimerPage()),
+                  visible: _showNewsContainer, child: StopWatchTimerPage()),
             ],
           )),
         ),
@@ -192,11 +193,20 @@ class _HomePageState extends State<HomePage> {
 
   Widget CardListView() {
     return ListView.builder(
+      key: Listkey,
       physics: const BouncingScrollPhysics(),
       shrinkWrap: true,
       itemCount: cardList.length,
       itemBuilder: (context, index) {
-        return cardList[index];
+        return Dismissible(
+          key: UniqueKey(),
+          child: cardList[index],
+          onDismissed: (direction) {
+            setState(() {
+              cardList.removeAt(index);
+            });
+          },
+        );
       },
     );
   }
@@ -239,6 +249,8 @@ class _HomePageState extends State<HomePage> {
 }
 
 class StopWatchTimerPage extends StatefulWidget {
+  const StopWatchTimerPage({Key? key}) : super(key: key);
+
   @override
   _StopWatchTimerPageState createState() => _StopWatchTimerPageState();
 }
