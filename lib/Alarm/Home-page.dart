@@ -9,7 +9,7 @@ import 'package:fresh_wake/Widgets.dart';
 
 int _currentIndex = 0;
 late String valueText;
-final Listkey = Key("ListKey");
+final Listkey = const Key("ListKey");
 bool _showAgentsContainer = true;
 bool _showNewsContainer = false;
 
@@ -44,6 +44,7 @@ class _HomePageState extends State<HomePage> {
           }));
         },
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       backgroundColor: Colors.black,
       body: SafeArea(
         child: SingleChildScrollView(
@@ -55,7 +56,7 @@ class _HomePageState extends State<HomePage> {
                 child: HomePageWidget(),
               ),
               Visibility(
-                  visible: _showNewsContainer, child: StopWatchTimerPage()),
+                  visible: _showNewsContainer, child: const StopWatchTimerPage()),
             ],
           )),
         ),
@@ -256,134 +257,182 @@ class StopWatchTimerPage extends StatefulWidget {
 }
 
 class _StopWatchTimerPageState extends State<StopWatchTimerPage> {
-  static const countdownDuration = Duration(minutes: 10);
-  Duration duration = const Duration();
+  int seconds = 0, minutes = 0, hours = 0;
+  String digitSeconds = "00", digitMinutes = "00", digitHours = "00";
   Timer? timer;
+  bool started = false;
+  List laps = [];
 
-  bool countDown = true;
+  //creating the stop timer
 
-  @override
-  void initState() {
-    super.initState();
-    reset();
-  }
-
-  void reset() {
-    if (countDown) {
-      setState(() => duration = countdownDuration);
-    } else {
-      setState(() => duration = const Duration());
-    }
-  }
-
-  void startTimer() {
-    timer = Timer.periodic(const Duration(seconds: 1), (_) => addTime());
-  }
-
-  void addTime() {
-    final addSeconds = countDown ? -1 : 1;
+  void stop() {
+    timer!.cancel();
     setState(() {
-      final seconds = duration.inSeconds + addSeconds;
-      if (seconds < 0) {
-        timer?.cancel();
-      } else {
-        duration = Duration(seconds: seconds);
-      }
+      started = false;
     });
   }
 
-  void stopTimer({bool resets = true}) {
-    if (resets) {
-      reset();
-    }
-    setState(() => timer?.cancel());
+  //creating reset function\
+
+  void reset() {
+    timer!.cancel();
+    setState(() {
+      seconds = 0;
+      minutes = 0;
+      hours = 0;
+
+      digitSeconds = "00";
+      digitMinutes = "00";
+      digitHours = "00";
+      started = false;
+    });
+  }
+
+  void addLaps() {
+    String lap = "$digitHours:$digitMinutes:$digitSeconds";
+    setState(() {
+      laps.add(lap);
+    });
+  }
+
+  //creating the start timer function
+  void start() {
+    started = true;
+    timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      int localSeconds = seconds + 1;
+      int localMinutes = minutes;
+      int localHours = hours;
+
+      if (localSeconds > 59) {
+        if (localMinutes > 59) {
+          localHours++;
+          localMinutes = 0;
+        } else {
+          localMinutes++;
+          localSeconds = 0;
+        }
+      }
+      setState(() {
+        seconds = localSeconds;
+        minutes = localMinutes;
+        hours = localHours;
+
+        digitSeconds = (seconds >= 10) ? "$seconds" : "0$seconds";
+        digitMinutes = (minutes >= 10) ? "$minutes" : "0$minutes";
+        digitHours = (hours >= 10) ? "$hours" : "0$hours";
+      });
+    });
   }
 
   @override
-  Widget build(BuildContext context) => Center(
+  Widget build(BuildContext context) {
+    return Padding(
+        padding: const EdgeInsets.all(16.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            buildTime(),
-            const SizedBox(
-              height: 80,
-            ),
-            buildButtons()
-          ],
-        ),
-      );
-
-  Widget buildTime() {
-    String twoDigits(int n) => n.toString().padLeft(2, '0');
-    final hours = twoDigits(duration.inHours);
-    final minutes = twoDigits(duration.inMinutes.remainder(60));
-    final seconds = twoDigits(duration.inSeconds.remainder(60));
-    return Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-      buildTimeCard(time: hours, header: 'HOURS'),
-      const SizedBox(
-        width: 8,
-      ),
-      buildTimeCard(time: minutes, header: 'MINUTES'),
-      const SizedBox(
-        width: 8,
-      ),
-      buildTimeCard(time: seconds, header: 'SECONDS'),
-    ]);
-  }
-
-  Widget buildTimeCard({required String time, required String header}) =>
-      GestureDetector(
-        onTap: () {},
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              padding: const EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                  color: Colors.white, borderRadius: BorderRadius.circular(20)),
+            const Center(
               child: Text(
-                time,
-                style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                    fontSize: 50),
+                "Stopwatch App",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.w600),
               ),
             ),
             const SizedBox(
-              height: 24,
+              height: 20.0,
             ),
-            Text(header, style: const TextStyle(color: Colors.black45)),
-          ],
-        ),
-      );
-
-  Widget buildButtons() {
-    final isRunning = timer == null ? false : timer!.isActive;
-    final isCompleted = duration.inSeconds == 0;
-    return isRunning || isCompleted
-        ? Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ButtonWidget(
-                  text: 'STOP',
-                  onClicked: () {
-                    if (isRunning) {
-                      stopTimer(resets: false);
-                    }
-                  }),
-              const SizedBox(
-                width: 12,
+            Center(
+              child: Text(
+                "$digitHours:$digitMinutes:$digitSeconds",
+                style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 82.0,
+                    fontWeight: FontWeight.w600),
               ),
-              ButtonWidget(text: "CANCEL", onClicked: stopTimer),
-            ],
-          )
-        : ButtonWidget(
-            text: "Start Timer!",
-            color: Colors.black,
-            backgroundColor: Colors.white,
-            onClicked: () {
-              startTimer();
-            });
+            ),
+            const SizedBox(
+              height: 20.0,
+            ),
+            Container(
+              height: 400.0,
+              decoration: BoxDecoration(
+                  color: const Color(0xFF1A1A1A),
+                  borderRadius: BorderRadius.circular(8)),
+              //now let's add a list builder
+
+              child: ListView.builder(
+                itemCount: laps.length,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Lap ${index + 1}',
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 16.0,
+                          ),
+                        ),
+                        Text(
+                          "${laps[index]}",
+                          style: const TextStyle(color: Colors.white, fontSize: 16.0),
+                        )
+                      ],
+                    ),
+                  );
+                },
+              ),
+            ),
+            const SizedBox(
+              height: 20.0,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  child: RawMaterialButton(
+                    onPressed: () {
+                      (!started) ? start() : stop();
+                    },
+                    shape: const StadiumBorder(
+                        side: BorderSide(color: Color(0xFF1A1A1A))),
+                    child: Text(
+                      (!started) ? "Start" : "Pause",
+                      style: const TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  width: 8.0,
+                ),
+                IconButton(
+                    color: Colors.white,
+                    onPressed: () {
+                      addLaps();
+                    },
+                    icon: const Icon(Icons.flag)),
+                const SizedBox(
+                  width: 8,
+                ),
+                Expanded(
+                    child: RawMaterialButton(
+                  onPressed: () {
+                    reset();
+                  },
+                  fillColor: const Color(0xFF1A1A1A),
+                  shape: const StadiumBorder(),
+                  child: const Text(
+                    "Reset",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ))
+              ],
+            )
+          ],
+        ));
   }
 }
 

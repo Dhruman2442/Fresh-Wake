@@ -12,6 +12,19 @@ final userdata = GetStorage();
 List<double> WeekDaysCount = [54, 100, 20, 50, 60, 99, 70];
 List<String> WeekDays = ["M", "T", "W", "T", "F", "S", "S"];
 
+List<String> SettingList = [
+  "Account Details",
+  "Settings",
+  "Help and Support",
+  "Logout",
+];
+List<Image> SettingImageList = [
+  Image.asset("asset/Profile-person.png"),
+  Image.asset("asset/Settings.png"),
+  Image.asset("asset/Help.png"),
+  Image.asset("asset/Logout.png"),
+];
+
 Widget TextStyle1(String text, double fontSize, Color color,
     FontWeight fontWeight, TextAlign textAlign, FontStyle fontStyle) {
   return Text(

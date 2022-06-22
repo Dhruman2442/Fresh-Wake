@@ -1,19 +1,6 @@
 import "package:flutter/material.dart";
 import 'package:fresh_wake/Widgets.dart';
 
-List<String> SettingList = [
-  "Account Details",
-  "Settings",
-  "Help and Support",
-  "Logout",
-];
-List<Image> SettingImageList = [
-  Image.asset("asset/Profile-person.png"),
-  Image.asset("asset/Settings.png"),
-  Image.asset("asset/Help.png"),
-  Image.asset("asset/Logout.png"),
-];
-
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
 

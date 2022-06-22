@@ -1,5 +1,6 @@
 import 'package:analog_clock/analog_clock.dart';
 import 'package:flutter/material.dart';
+import 'package:fresh_wake/Alarm/theme.dart';
 import 'package:fresh_wake/Widgets.dart';
 import 'package:lottie/lottie.dart';
 
@@ -140,7 +141,36 @@ class _AlarmPageState extends State<AlarmPage> {
               ),
             ),
             Space(20),
-
+            Container(
+              height: 60,
+              child: Card(
+                color: FontColor_Blacktheme,
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  scrollDirection: Axis.horizontal,
+                  itemCount: WeekDays.length,
+                  itemBuilder: (context, index) {
+                    return TextButton(
+                      onPressed: () {
+                        setState(() {
+                          if (WeekDays[index] == FontColor_White)
+                            FontColor_White = FontColor_Purpletheme;
+                        });
+                        print(WeekDays[index]);
+                        WeekDays[index];
+                      },
+                      child: TextStyle1(
+                          "${WeekDays[index]}",
+                          20,
+                          FontColor_White,
+                          FontWeight.w700,
+                          TextAlign.center,
+                          FontStyle.normal),
+                    );
+                  },
+                ),
+              ),
+            ),
             // SizedBox(
             //   height: 200,
             //   width: 200,
@@ -149,7 +179,7 @@ class _AlarmPageState extends State<AlarmPage> {
             //   ),
             // ),
             ElevatedButton(
-              child: TextStyle1('Save', 20, Colors.black, FontWeight.bold,
+              child: TextStyle1('Save', 20, FontColor_Black, FontWeight.bold,
                   TextAlign.center, FontStyle.normal),
               onPressed: () {
                 setState(
@@ -203,7 +233,7 @@ class _AlarmPageState extends State<AlarmPage> {
           title: TextStyle1(
               "${userdata.read('Name')} | ${userdata.read('Price')}:${userdata.read('Brand')}",
               20,
-              Colors.white,
+              FontColor_White,
               FontWeight.w600,
               TextAlign.left,
               FontStyle.normal),
@@ -212,10 +242,10 @@ class _AlarmPageState extends State<AlarmPage> {
             splashRadius: 0.5,
             onChanged: (value) {},
             value: isSwitched,
-            activeColor: Colors.blue,
-            activeTrackColor: Colors.white,
-            inactiveThumbColor: Colors.white,
-            inactiveTrackColor: Colors.grey,
+            activeColor: FontColor_Purpletheme,
+            activeTrackColor: FontColor_White,
+            inactiveThumbColor: FontColor_White,
+            inactiveTrackColor: FontColor_Grey,
           )),
     );
   }
