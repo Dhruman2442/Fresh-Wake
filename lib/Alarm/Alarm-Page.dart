@@ -1,4 +1,5 @@
 import 'package:analog_clock/analog_clock.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:fresh_wake/Alarm/theme.dart';
 import 'package:fresh_wake/Widgets.dart';
@@ -47,7 +48,7 @@ class _AlarmPageState extends State<AlarmPage> {
                 _selectTime(context);
               },
               child: Card(
-                color: Color(0xFFFFFFF),
+                color: const Color(0xFFFFFFF),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15.0),
                 ),
@@ -156,7 +157,9 @@ class _AlarmPageState extends State<AlarmPage> {
                           if (WeekDays[index] == FontColor_White)
                             FontColor_White = FontColor_Purpletheme;
                         });
-                        print(WeekDays[index]);
+                        if (kDebugMode) {
+                          print(WeekDays[index]);
+                        }
                         WeekDays[index];
                       },
                       child: TextStyle1(
