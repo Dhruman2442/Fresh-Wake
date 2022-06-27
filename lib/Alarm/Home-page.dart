@@ -6,6 +6,7 @@ import "package:flutter/material.dart";
 import 'package:fresh_wake/Alarm/Alarm-Page.dart';
 import 'package:fresh_wake/Alarm/Profile-Page.dart';
 import 'package:fresh_wake/Widgets.dart';
+import 'package:fresh_wake/theme.dart';
 
 int _currentIndex = 0;
 late String valueText;
@@ -36,7 +37,7 @@ class _HomePageState extends State<HomePage> {
       // ),
       bottomNavigationBar: bottomNavBar(),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: const Color(0xFF7C4DFF),
+        backgroundColor: FontColor_Purple,
         child: const Icon(Icons.add),
         onPressed: () {
           Navigator.of(context).push(MaterialPageRoute(builder: (context) {
@@ -45,7 +46,7 @@ class _HomePageState extends State<HomePage> {
         },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      backgroundColor: Colors.black,
+      backgroundColor: FontColor_Black,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Center(
@@ -56,7 +57,8 @@ class _HomePageState extends State<HomePage> {
                 child: HomePageWidget(),
               ),
               Visibility(
-                  visible: _showNewsContainer, child: const StopWatchTimerPage()),
+                  visible: _showNewsContainer,
+                  child: const StopWatchTimerPage()),
             ],
           )),
         ),
@@ -90,8 +92,8 @@ class _HomePageState extends State<HomePage> {
         ),
         Container(
           padding: const EdgeInsets.only(right: 40, left: 33),
-          child: TextStyle1("Saved Alarm", 16, const Color(0xFFE7E3E3),
-              FontWeight.w600, TextAlign.center, FontStyle.normal),
+          child: TextStyle1("Saved Alarm", 16, FontColor_White, FontWeight.w600,
+              TextAlign.center, FontStyle.normal),
         ),
         Container(
           margin: const EdgeInsets.all(10),
@@ -105,7 +107,7 @@ class _HomePageState extends State<HomePage> {
     return Column(
       children: [
         Container(
-          color: Colors.black,
+          color: FontColor_Black,
           child: Row(
             children: [
               ImageWidget("asset/Night.png", 50, 50, () {}),
@@ -113,17 +115,17 @@ class _HomePageState extends State<HomePage> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  TextStyle1("Good Night", 16, const Color(0xFFFFFFFF),
-                      FontWeight.bold, TextAlign.center, FontStyle.normal),
-                  TextStyle1("Ryan", 16, const Color(0xFFFFFFFF),
-                      FontWeight.bold, TextAlign.center, FontStyle.normal)
+                  TextStyle1("Good Night", 16, FontColor_White, FontWeight.bold,
+                      TextAlign.center, FontStyle.normal),
+                  TextStyle1("Ryan", 16, FontColor_White, FontWeight.bold,
+                      TextAlign.center, FontStyle.normal)
                 ],
               )
             ],
           ),
         ),
-        TextStyle1("Tue 10th May, 2022", 13, const Color(0xFFFFFFFF),
-            FontWeight.w400, TextAlign.center, FontStyle.normal),
+        TextStyle1("Tue 10th May, 2022", 13, FontColor_White, FontWeight.w400,
+            TextAlign.center, FontStyle.normal),
       ],
     );
   }
@@ -141,10 +143,10 @@ class _HomePageState extends State<HomePage> {
         width: MediaQuery.of(context).size.width,
         height: 215,
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          TextStyle1("Average Sleep", 16, const Color(0xFFE7E3E3),
-              FontWeight.w700, TextAlign.center, FontStyle.normal),
-          TextStyle1("7 hours last week", 12, const Color(0xFFE0E0E0),
-              FontWeight.w500, TextAlign.center, FontStyle.normal),
+          TextStyle1("Average Sleep", 16, FontColor_White, FontWeight.w700,
+              TextAlign.center, FontStyle.normal),
+          TextStyle1("7 hours last week", 12, FontColor_White, FontWeight.w500,
+              TextAlign.center, FontStyle.normal),
           BarChart()
         ]),
       ),
@@ -175,8 +177,8 @@ class _HomePageState extends State<HomePage> {
                               begin: Alignment.topCenter,
                               end: Alignment.bottomCenter,
                               colors: [
-                                Colors.pink.shade900,
-                                Colors.deepPurple
+                                FontColor_Darkpink,
+                                FontColor_Purpletheme
                               ])),
                       child: SizedBox(
                         height: WeekDaysCount[index],
@@ -185,7 +187,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                   ),
-                  TextStyle1(WeekDays[index], 14, const Color(0xFFE0E0E0),
+                  TextStyle1(WeekDays[index], 14, FontColor_Whitetheme,
                       FontWeight.w500, TextAlign.center, FontStyle.normal),
                 ]);
           }),
@@ -214,20 +216,20 @@ class _HomePageState extends State<HomePage> {
 
   Widget bottomNavBar() {
     return CurvedNavigationBar(
-      items: const <Widget>[
+      items: <Widget>[
         ImageIcon(
-          AssetImage('asset/Bell.png'),
+          const AssetImage('asset/Bell.png'),
           size: 35,
-          color: Color(0xFF6265C3),
+          color: FontColor_Purpletheme,
         ),
         ImageIcon(
-          AssetImage('asset/Timer.png'),
+          const AssetImage('asset/Timer.png'),
           size: 35,
-          color: Color(0xFF6265C3),
+          color: FontColor_Purpletheme,
         )
       ],
       height: 55,
-      color: Colors.grey.shade900,
+      color: FontColor_Darkgrey,
       backgroundColor: Colors.transparent,
       animationDuration: const Duration(milliseconds: 600),
       onTap: (value) {
@@ -330,11 +332,11 @@ class _StopWatchTimerPageState extends State<StopWatchTimerPage> {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            const Center(
+            Center(
               child: Text(
                 "Stopwatch App",
                 style: TextStyle(
-                    color: Colors.white,
+                    color: FontColor_White,
                     fontSize: 20.0,
                     fontWeight: FontWeight.w600),
               ),
@@ -345,8 +347,8 @@ class _StopWatchTimerPageState extends State<StopWatchTimerPage> {
             Center(
               child: Text(
                 "$digitHours:$digitMinutes:$digitSeconds",
-                style: const TextStyle(
-                    color: Colors.white,
+                style: TextStyle(
+                    color: FontColor_White,
                     fontSize: 82.0,
                     fontWeight: FontWeight.w600),
               ),
@@ -357,7 +359,7 @@ class _StopWatchTimerPageState extends State<StopWatchTimerPage> {
             Container(
               height: 400.0,
               decoration: BoxDecoration(
-                  color: const Color(0xFF1A1A1A),
+                  color: FontColor_Blacktheme,
                   borderRadius: BorderRadius.circular(8)),
               //now let's add a list builder
 
@@ -371,14 +373,15 @@ class _StopWatchTimerPageState extends State<StopWatchTimerPage> {
                       children: [
                         Text(
                           'Lap ${index + 1}',
-                          style: const TextStyle(
-                            color: Colors.white,
+                          style: TextStyle(
+                            color: FontColor_White,
                             fontSize: 16.0,
                           ),
                         ),
                         Text(
                           "${laps[index]}",
-                          style: const TextStyle(color: Colors.white, fontSize: 16.0),
+                          style:
+                              TextStyle(color: FontColor_White, fontSize: 16.0),
                         )
                       ],
                     ),
@@ -397,11 +400,11 @@ class _StopWatchTimerPageState extends State<StopWatchTimerPage> {
                     onPressed: () {
                       (!started) ? start() : stop();
                     },
-                    shape: const StadiumBorder(
-                        side: BorderSide(color: Color(0xFF1A1A1A))),
+                    shape: StadiumBorder(
+                        side: BorderSide(color: FontColor_Blacktheme)),
                     child: Text(
                       (!started) ? "Start" : "Pause",
-                      style: const TextStyle(color: Colors.white),
+                      style: TextStyle(color: FontColor_White),
                     ),
                   ),
                 ),
@@ -409,7 +412,7 @@ class _StopWatchTimerPageState extends State<StopWatchTimerPage> {
                   width: 8.0,
                 ),
                 IconButton(
-                    color: Colors.white,
+                    color: FontColor_White,
                     onPressed: () {
                       addLaps();
                     },
@@ -422,11 +425,11 @@ class _StopWatchTimerPageState extends State<StopWatchTimerPage> {
                   onPressed: () {
                     reset();
                   },
-                  fillColor: const Color(0xFF1A1A1A),
+                  fillColor: FontColor_Blacktheme,
                   shape: const StadiumBorder(),
-                  child: const Text(
+                  child: Text(
                     "Reset",
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: FontColor_White),
                   ),
                 ))
               ],
@@ -434,30 +437,4 @@ class _StopWatchTimerPageState extends State<StopWatchTimerPage> {
           ],
         ));
   }
-}
-
-class ButtonWidget extends StatelessWidget {
-  final String text;
-  final Color color;
-  final Color backgroundColor;
-  final VoidCallback onClicked;
-
-  const ButtonWidget(
-      {Key? key,
-      required this.text,
-      required this.onClicked,
-      this.color = Colors.white,
-      this.backgroundColor = Colors.black})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) => ElevatedButton(
-      style: ElevatedButton.styleFrom(
-          primary: backgroundColor,
-          padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16)),
-      onPressed: onClicked,
-      child: Text(
-        text,
-        style: TextStyle(fontSize: 20, color: color),
-      ));
 }

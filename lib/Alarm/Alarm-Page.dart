@@ -1,7 +1,7 @@
 import 'package:analog_clock/analog_clock.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:fresh_wake/Alarm/theme.dart';
+import 'package:fresh_wake/theme.dart';
 import 'package:fresh_wake/Widgets.dart';
 import 'package:lottie/lottie.dart';
 
@@ -22,12 +22,12 @@ class _AlarmPageState extends State<AlarmPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF000000),
+      backgroundColor: FontColor_Black,
       body: SafeArea(
         child: Column(
           children: [
-            TextStyle1("Set Alarm", 24, const Color(0xFFFFFFFF),
-                FontWeight.w600, TextAlign.center, FontStyle.normal),
+            TextStyle1("Set Alarm", 24, FontColor_White, FontWeight.w600,
+                TextAlign.center, FontStyle.normal),
             Space(20),
             Container(
               margin: const EdgeInsets.only(left: 10, right: 10),
@@ -36,7 +36,7 @@ class _AlarmPageState extends State<AlarmPage> {
                   "Alarm Name",
                   "Task",
                   20,
-                  const Color(0xFFFFFFFF),
+                  FontColor_White,
                   FontWeight.w600,
                   TextAlign.center,
                   FontStyle.normal,
@@ -62,20 +62,20 @@ class _AlarmPageState extends State<AlarmPage> {
                       child: AnalogClock(
                         decoration: BoxDecoration(
                             border: Border.all(
-                                width: 10, color: const Color(0xFF1A1A1A)),
-                            color: const Color(0xFF1A1A1A),
+                                width: 10, color: FontColor_Blacktheme),
+                            color: FontColor_Blacktheme,
                             shape: BoxShape.circle),
                         // decoration
                         isLive: false,
-                        hourHandColor: Colors.white,
-                        minuteHandColor: Colors.white,
+                        hourHandColor: FontColor_White,
+                        minuteHandColor: FontColor_White,
                         showSecondHand: false,
-                        numberColor: Colors.white,
+                        numberColor: FontColor_White,
                         showNumbers: true,
                         textScaleFactor: 2.2,
                         showTicks: false,
                         showDigitalClock: false,
-                        digitalClockColor: Colors.white,
+                        digitalClockColor: FontColor_White,
                         showAllNumbers: true,
                       ),
                     ),
@@ -88,47 +88,42 @@ class _AlarmPageState extends State<AlarmPage> {
                               margin: const EdgeInsets.only(right: 10),
                               padding: const EdgeInsets.all(15),
                               decoration: BoxDecoration(
-                                color: const Color(0xFF1A1A1A),
+                                color: FontColor_Blacktheme,
                                 border: Border.all(
                                   width: 1,
-                                  color: const Color(0xFF1A1A1A),
+                                  color: FontColor_Blacktheme,
                                 ),
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               child: TextStyle1(
                                   '${selectedTime.hour}',
                                   20,
-                                  Colors.white,
+                                  FontColor_White,
                                   FontWeight.bold,
                                   TextAlign.center,
                                   FontStyle.normal),
                             ),
                           ],
                         ),
-                        TextStyle1(
-                            ":",
-                            25,
-                            const Color(0xFFFFFFFF),
-                            FontWeight.w600,
-                            TextAlign.center,
-                            FontStyle.normal),
+                        TextStyle1(":", 25, FontColor_White, FontWeight.w600,
+                            TextAlign.center, FontStyle.normal),
                         Column(
                           children: [
                             Container(
                               margin: const EdgeInsets.only(left: 10),
                               padding: const EdgeInsets.all(15),
                               decoration: BoxDecoration(
-                                color: const Color(0xFF1A1A1A),
+                                color: FontColor_Blacktheme,
                                 border: Border.all(
                                   width: 1,
-                                  color: const Color(0xFF1A1A1A),
+                                  color: FontColor_Blacktheme,
                                 ),
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               child: TextStyle1(
                                   '${selectedTime.minute}',
                                   20,
-                                  Colors.white,
+                                  FontColor_White,
                                   FontWeight.bold,
                                   TextAlign.center,
                                   FontStyle.normal),
@@ -280,8 +275,8 @@ class _AlarmPageState extends State<AlarmPage> {
               Container(
                 width: MediaQuery.of(context).size.width / 20,
               ),
-              TextStyle1(WeekDays[index], 14, const Color(0xFFE0E0E0),
-                  FontWeight.w500, TextAlign.center, FontStyle.normal),
+              TextStyle1(WeekDays[index], 14, FontColor_White, FontWeight.w500,
+                  TextAlign.center, FontStyle.normal),
             ]);
           }),
     );

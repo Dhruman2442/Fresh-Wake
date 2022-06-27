@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:fresh_wake/theme.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -70,7 +71,7 @@ Widget Textfield1(
     controller: controller,
     style: TextStyle(color: color, fontSize: fontSize),
     decoration: InputDecoration(
-        fillColor: const Color(0xBF484848),
+        fillColor: FontColor_Darkergrey,
         filled: true,
         enabledBorder: const OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -116,10 +117,10 @@ Widget TextfieldPassword(
     bool obscureText) {
   return TextField(
     controller: controller,
-    style: TextStyle(color: Colors.white, fontSize: fontSize),
+    style: TextStyle(color: FontColor_White, fontSize: fontSize),
     obscureText: obscureText,
     decoration: InputDecoration(
-      fillColor: const Color(0xBF484848),
+      fillColor: FontColor_Darkergrey,
       filled: true,
       enabledBorder: const OutlineInputBorder(
         borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -227,7 +228,7 @@ Widget Button1(
       onPressed: onPressed,
       color: color,
       child: TextStyle1(
-          text, size, Colors.white, fontWeight, textAlign, fontStyle),
+          text, size, FontColor_White, fontWeight, textAlign, fontStyle),
     ),
   );
 }

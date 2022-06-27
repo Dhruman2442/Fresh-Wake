@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fresh_wake/Alarm/Home-page.dart';
 import 'package:fresh_wake/Alarm/Login.dart';
 import 'package:fresh_wake/Widgets.dart';
+import 'package:fresh_wake/theme.dart';
 
 bool _isObscure = false;
 
@@ -14,24 +15,24 @@ class _SignupPageState extends State<SignupPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: FontColor_Black,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Center(
             child: Container(
-              padding: EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
               child: Column(
                 children: [
                   Space(80),
                   ImageWidget("asset/Freshwakelogo.png", 112, 79, () {}),
                   Space(50),
-                  TextStyle1("Sign Up", 31, Color(0xFFE7E3E3), FontWeight.w700,
-                      TextAlign.center, FontStyle.normal),
+                  TextStyle1("Sign Up", 31, FontColor_Whitetheme,
+                      FontWeight.w700, TextAlign.center, FontStyle.normal),
                   Space(30),
                   TextStyle1(
                       "Please Sign up to continue",
                       20,
-                      Color(0xFFE7E3E3),
+                      FontColor_Whitetheme,
                       FontWeight.w500,
                       TextAlign.center,
                       FontStyle.normal),
@@ -41,7 +42,7 @@ class _SignupPageState extends State<SignupPage> {
                       "Email",
                       "Enter your email",
                       18,
-                      Color(0xFFE7E3E3),
+                      FontColor_Whitetheme,
                       FontWeight.w500,
                       TextAlign.center,
                       FontStyle.normal,
@@ -52,7 +53,7 @@ class _SignupPageState extends State<SignupPage> {
                       "Password",
                       "Enter your password",
                       18,
-                      Color(0xFFE7E3E3),
+                      FontColor_Whitetheme,
                       FontWeight.w500,
                       TextAlign.center,
                       FontStyle.normal,
@@ -62,13 +63,13 @@ class _SignupPageState extends State<SignupPage> {
                     });
                   }, !_isObscure),
                   Space(45),
-                  Button1("Signup", 18, Color(0xFF6265C3), FontWeight.w500,
+                  Button1("Signup", 18, FontColor_Purple, FontWeight.w500,
                       TextAlign.center, FontStyle.normal, () {
-                    Navigator.of(context).push(
-                        MaterialPageRoute(builder: (contex) => HomePage()));
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (contex) => const HomePage()));
                   }, context),
                   Space(20),
-                  TextStyle1("Or", 20, Color(0xFFE7E3E3), FontWeight.w600,
+                  TextStyle1("Or", 20, FontColor_Whitetheme, FontWeight.w600,
                       TextAlign.center, FontStyle.normal),
                   Space(20),
                   Stack(
@@ -76,7 +77,7 @@ class _SignupPageState extends State<SignupPage> {
                       Button1(
                           "Signup with Google",
                           18,
-                          Color(0xFF383838),
+                          const Color(0xFF383838),
                           FontWeight.w500,
                           TextAlign.center,
                           FontStyle.normal,
@@ -94,7 +95,7 @@ class _SignupPageState extends State<SignupPage> {
                       TextStyle1(
                           "Already have an account?",
                           14,
-                          Color(0xFFE7E3E3),
+                          FontColor_Whitetheme,
                           FontWeight.w300,
                           TextAlign.center,
                           FontStyle.normal),
@@ -105,7 +106,7 @@ class _SignupPageState extends State<SignupPage> {
                         },
                         "Login",
                         14,
-                        Color(0xFF6265C3),
+                        FontColor_Purpletheme,
                         FontWeight.w500,
                         TextAlign.start,
                         FontStyle.normal,
