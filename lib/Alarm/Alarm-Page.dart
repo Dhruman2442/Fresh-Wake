@@ -1,9 +1,8 @@
 import 'package:analog_clock/analog_clock.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:fresh_wake/theme.dart';
 import 'package:fresh_wake/Widgets.dart';
-import 'package:lottie/lottie.dart';
+import 'package:fresh_wake/theme.dart';
 
 List<Widget> cardList = [];
 bool isSwitched = true;
@@ -22,11 +21,11 @@ class _AlarmPageState extends State<AlarmPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: FontColor_Black,
+      backgroundColor: Color_Black,
       body: SafeArea(
         child: Column(
           children: [
-            TextStyle1("Set Alarm", 24, FontColor_White, FontWeight.w600,
+            TextStyle1("Set Alarm", 24, Color_White, FontWeight.w600,
                 TextAlign.center, FontStyle.normal),
             Space(20),
             Container(
@@ -36,7 +35,7 @@ class _AlarmPageState extends State<AlarmPage> {
                   "Alarm Name",
                   "Task",
                   20,
-                  FontColor_White,
+                  Color_White,
                   FontWeight.w600,
                   TextAlign.center,
                   FontStyle.normal,
@@ -62,20 +61,20 @@ class _AlarmPageState extends State<AlarmPage> {
                       child: AnalogClock(
                         decoration: BoxDecoration(
                             border: Border.all(
-                                width: 10, color: FontColor_Blacktheme),
-                            color: FontColor_Blacktheme,
+                                width: 10, color: Color_Blacktheme),
+                            color: Color_Blacktheme,
                             shape: BoxShape.circle),
                         // decoration
                         isLive: false,
-                        hourHandColor: FontColor_White,
-                        minuteHandColor: FontColor_White,
+                        hourHandColor: Color_White,
+                        minuteHandColor: Color_White,
                         showSecondHand: false,
-                        numberColor: FontColor_White,
+                        numberColor: Color_White,
                         showNumbers: true,
                         textScaleFactor: 2.2,
                         showTicks: false,
                         showDigitalClock: false,
-                        digitalClockColor: FontColor_White,
+                        digitalClockColor: Color_White,
                         showAllNumbers: true,
                       ),
                     ),
@@ -88,24 +87,24 @@ class _AlarmPageState extends State<AlarmPage> {
                               margin: const EdgeInsets.only(right: 10),
                               padding: const EdgeInsets.all(15),
                               decoration: BoxDecoration(
-                                color: FontColor_Blacktheme,
+                                color: Color_Blacktheme,
                                 border: Border.all(
                                   width: 1,
-                                  color: FontColor_Blacktheme,
+                                  color: Color_Blacktheme,
                                 ),
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               child: TextStyle1(
                                   '${selectedTime.hour}',
                                   20,
-                                  FontColor_White,
+                                  Color_White,
                                   FontWeight.bold,
                                   TextAlign.center,
                                   FontStyle.normal),
                             ),
                           ],
                         ),
-                        TextStyle1(":", 25, FontColor_White, FontWeight.w600,
+                        TextStyle1(":", 25, Color_White, FontWeight.w600,
                             TextAlign.center, FontStyle.normal),
                         Column(
                           children: [
@@ -113,17 +112,17 @@ class _AlarmPageState extends State<AlarmPage> {
                               margin: const EdgeInsets.only(left: 10),
                               padding: const EdgeInsets.all(15),
                               decoration: BoxDecoration(
-                                color: FontColor_Blacktheme,
+                                color: Color_Blacktheme,
                                 border: Border.all(
                                   width: 1,
-                                  color: FontColor_Blacktheme,
+                                  color: Color_Blacktheme,
                                 ),
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               child: TextStyle1(
                                   '${selectedTime.minute}',
                                   20,
-                                  FontColor_White,
+                                  Color_White,
                                   FontWeight.bold,
                                   TextAlign.center,
                                   FontStyle.normal),
@@ -140,7 +139,7 @@ class _AlarmPageState extends State<AlarmPage> {
             Container(
               height: 60,
               child: Card(
-                color: FontColor_Blacktheme,
+                color: Color_Blacktheme,
                 child: ListView.builder(
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
@@ -149,8 +148,8 @@ class _AlarmPageState extends State<AlarmPage> {
                     return TextButton(
                       onPressed: () {
                         setState(() {
-                          if (WeekDays[index] == FontColor_White)
-                            FontColor_White = FontColor_Purpletheme;
+                          if (WeekDays[index] == Color_White)
+                            Color_White = Color_Purpletheme;
                         });
                         if (kDebugMode) {
                           print(WeekDays[index]);
@@ -160,7 +159,7 @@ class _AlarmPageState extends State<AlarmPage> {
                       child: TextStyle1(
                           "${WeekDays[index]}",
                           20,
-                          FontColor_White,
+                         Color_White,
                           FontWeight.w700,
                           TextAlign.center,
                           FontStyle.normal),
@@ -177,7 +176,7 @@ class _AlarmPageState extends State<AlarmPage> {
             //   ),
             // ),
             ElevatedButton(
-              child: TextStyle1('Save', 20, FontColor_Black, FontWeight.bold,
+              child: TextStyle1('Save', 20, Color_Black, FontWeight.bold,
                   TextAlign.center, FontStyle.normal),
               onPressed: () {
                 setState(
@@ -231,7 +230,7 @@ class _AlarmPageState extends State<AlarmPage> {
           title: TextStyle1(
               "${userdata.read('Name')} | ${userdata.read('Price')}:${userdata.read('Brand')}",
               20,
-              FontColor_White,
+              Color_White,
               FontWeight.w600,
               TextAlign.left,
               FontStyle.normal),
@@ -240,10 +239,10 @@ class _AlarmPageState extends State<AlarmPage> {
             splashRadius: 0.5,
             onChanged: (value) {},
             value: isSwitched,
-            activeColor: FontColor_Purpletheme,
-            activeTrackColor: FontColor_White,
-            inactiveThumbColor: FontColor_White,
-            inactiveTrackColor: FontColor_Grey,
+            activeColor: Color_Purpletheme,
+            activeTrackColor: Color_White,
+            inactiveThumbColor: Color_White,
+            inactiveTrackColor: Color_Grey,
           )),
     );
   }
@@ -275,7 +274,7 @@ class _AlarmPageState extends State<AlarmPage> {
               Container(
                 width: MediaQuery.of(context).size.width / 20,
               ),
-              TextStyle1(WeekDays[index], 14, FontColor_White, FontWeight.w500,
+              TextStyle1(WeekDays[index], 14, Color_White, FontWeight.w500,
                   TextAlign.center, FontStyle.normal),
             ]);
           }),

@@ -15,7 +15,7 @@ class _SignupPageState extends State<SignupPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: FontColor_Black,
+      backgroundColor: Color_Black,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Center(
@@ -26,13 +26,13 @@ class _SignupPageState extends State<SignupPage> {
                   Space(80),
                   ImageWidget("asset/Freshwakelogo.png", 112, 79, () {}),
                   Space(50),
-                  TextStyle1("Sign Up", 31, FontColor_Whitetheme,
+                  TextStyle1("Sign Up", 31, Color_Whitetheme,
                       FontWeight.w700, TextAlign.center, FontStyle.normal),
                   Space(30),
                   TextStyle1(
                       "Please Sign up to continue",
                       20,
-                      FontColor_Whitetheme,
+                      Color_Whitetheme,
                       FontWeight.w500,
                       TextAlign.center,
                       FontStyle.normal),
@@ -42,7 +42,7 @@ class _SignupPageState extends State<SignupPage> {
                       "Email",
                       "Enter your email",
                       18,
-                      FontColor_Whitetheme,
+                      Color_Whitetheme,
                       FontWeight.w500,
                       TextAlign.center,
                       FontStyle.normal,
@@ -53,7 +53,7 @@ class _SignupPageState extends State<SignupPage> {
                       "Password",
                       "Enter your password",
                       18,
-                      FontColor_Whitetheme,
+                      Color_Whitetheme,
                       FontWeight.w500,
                       TextAlign.center,
                       FontStyle.normal,
@@ -63,13 +63,13 @@ class _SignupPageState extends State<SignupPage> {
                     });
                   }, !_isObscure),
                   Space(45),
-                  Button1("Signup", 18, FontColor_Purple, FontWeight.w500,
+                  Button1("Signup", 18, Color_Purple, FontWeight.w500,
                       TextAlign.center, FontStyle.normal, () {
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (contex) => const HomePage()));
                   }, context),
                   Space(20),
-                  TextStyle1("Or", 20, FontColor_Whitetheme, FontWeight.w600,
+                  TextStyle1("Or", 20, Color_Whitetheme, FontWeight.w600,
                       TextAlign.center, FontStyle.normal),
                   Space(20),
                   Stack(
@@ -95,7 +95,7 @@ class _SignupPageState extends State<SignupPage> {
                       TextStyle1(
                           "Already have an account?",
                           14,
-                          FontColor_Whitetheme,
+                          Color_Whitetheme,
                           FontWeight.w300,
                           TextAlign.center,
                           FontStyle.normal),
@@ -106,7 +106,7 @@ class _SignupPageState extends State<SignupPage> {
                         },
                         "Login",
                         14,
-                        FontColor_Purpletheme,
+                        Color_Purpletheme,
                         FontWeight.w500,
                         TextAlign.start,
                         FontStyle.normal,

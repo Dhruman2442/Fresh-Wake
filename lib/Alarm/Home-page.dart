@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-
 import "package:flutter/material.dart";
 import 'package:fresh_wake/Alarm/Alarm-Page.dart';
 import 'package:fresh_wake/Alarm/Profile-Page.dart';
@@ -37,7 +36,7 @@ class _HomePageState extends State<HomePage> {
       // ),
       bottomNavigationBar: bottomNavBar(),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: FontColor_Purple,
+        backgroundColor: Color_Purple,
         child: const Icon(Icons.add),
         onPressed: () {
           Navigator.of(context).push(MaterialPageRoute(builder: (context) {
@@ -46,7 +45,7 @@ class _HomePageState extends State<HomePage> {
         },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      backgroundColor: FontColor_Black,
+      backgroundColor: Color_Black,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Center(
@@ -92,7 +91,7 @@ class _HomePageState extends State<HomePage> {
         ),
         Container(
           padding: const EdgeInsets.only(right: 40, left: 33),
-          child: TextStyle1("Saved Alarm", 16, FontColor_White, FontWeight.w600,
+          child: TextStyle1("Saved Alarm", 16, Color_White, FontWeight.w600,
               TextAlign.center, FontStyle.normal),
         ),
         Container(
@@ -107,7 +106,7 @@ class _HomePageState extends State<HomePage> {
     return Column(
       children: [
         Container(
-          color: FontColor_Black,
+          color: Color_Black,
           child: Row(
             children: [
               ImageWidget("asset/Night.png", 50, 50, () {}),
@@ -115,16 +114,16 @@ class _HomePageState extends State<HomePage> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  TextStyle1("Good Night", 16, FontColor_White, FontWeight.bold,
+                  TextStyle1("Good Night", 16, Color_White, FontWeight.bold,
                       TextAlign.center, FontStyle.normal),
-                  TextStyle1("Ryan", 16, FontColor_White, FontWeight.bold,
+                  TextStyle1("Ryan", 16, Color_White, FontWeight.bold,
                       TextAlign.center, FontStyle.normal)
                 ],
               )
             ],
           ),
         ),
-        TextStyle1("Tue 10th May, 2022", 13, FontColor_White, FontWeight.w400,
+        TextStyle1("Tue 10th May, 2022", 13, Color_White, FontWeight.w400,
             TextAlign.center, FontStyle.normal),
       ],
     );
@@ -143,9 +142,9 @@ class _HomePageState extends State<HomePage> {
         width: MediaQuery.of(context).size.width,
         height: 215,
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          TextStyle1("Average Sleep", 16, FontColor_White, FontWeight.w700,
+          TextStyle1("Average Sleep", 16, Color_White, FontWeight.w700,
               TextAlign.center, FontStyle.normal),
-          TextStyle1("7 hours last week", 12, FontColor_White, FontWeight.w500,
+          TextStyle1("7 hours last week", 12, Color_White, FontWeight.w500,
               TextAlign.center, FontStyle.normal),
           BarChart()
         ]),
@@ -176,10 +175,7 @@ class _HomePageState extends State<HomePage> {
                           gradient: LinearGradient(
                               begin: Alignment.topCenter,
                               end: Alignment.bottomCenter,
-                              colors: [
-                                FontColor_Darkpink,
-                                FontColor_Purpletheme
-                              ])),
+                              colors: [Color_Darkpink, Color_Purpletheme])),
                       child: SizedBox(
                         height: WeekDaysCount[index],
                         // WeekDaysCount[index],
@@ -187,7 +183,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                   ),
-                  TextStyle1(WeekDays[index], 14, FontColor_Whitetheme,
+                  TextStyle1(WeekDays[index], 14, Color_Whitetheme,
                       FontWeight.w500, TextAlign.center, FontStyle.normal),
                 ]);
           }),
@@ -220,16 +216,16 @@ class _HomePageState extends State<HomePage> {
         ImageIcon(
           const AssetImage('asset/Bell.png'),
           size: 35,
-          color: FontColor_Purpletheme,
+          color: Color_Purpletheme,
         ),
         ImageIcon(
           const AssetImage('asset/Timer.png'),
           size: 35,
-          color: FontColor_Purpletheme,
+          color: Color_Purpletheme,
         )
       ],
       height: 55,
-      color: FontColor_Darkgrey,
+      color: Color_Darkgrey,
       backgroundColor: Colors.transparent,
       animationDuration: const Duration(milliseconds: 600),
       onTap: (value) {
@@ -336,7 +332,7 @@ class _StopWatchTimerPageState extends State<StopWatchTimerPage> {
               child: Text(
                 "Stopwatch App",
                 style: TextStyle(
-                    color: FontColor_White,
+                    color: Color_White,
                     fontSize: 20.0,
                     fontWeight: FontWeight.w600),
               ),
@@ -348,7 +344,7 @@ class _StopWatchTimerPageState extends State<StopWatchTimerPage> {
               child: Text(
                 "$digitHours:$digitMinutes:$digitSeconds",
                 style: TextStyle(
-                    color: FontColor_White,
+                    color: Color_White,
                     fontSize: 82.0,
                     fontWeight: FontWeight.w600),
               ),
@@ -359,7 +355,7 @@ class _StopWatchTimerPageState extends State<StopWatchTimerPage> {
             Container(
               height: 400.0,
               decoration: BoxDecoration(
-                  color: FontColor_Blacktheme,
+                  color: Color_Blacktheme,
                   borderRadius: BorderRadius.circular(8)),
               //now let's add a list builder
 
@@ -374,14 +370,13 @@ class _StopWatchTimerPageState extends State<StopWatchTimerPage> {
                         Text(
                           'Lap ${index + 1}',
                           style: TextStyle(
-                            color: FontColor_White,
+                            color: Color_White,
                             fontSize: 16.0,
                           ),
                         ),
                         Text(
                           "${laps[index]}",
-                          style:
-                              TextStyle(color: FontColor_White, fontSize: 16.0),
+                          style: TextStyle(color: Color_White, fontSize: 16.0),
                         )
                       ],
                     ),
@@ -401,10 +396,10 @@ class _StopWatchTimerPageState extends State<StopWatchTimerPage> {
                       (!started) ? start() : stop();
                     },
                     shape: StadiumBorder(
-                        side: BorderSide(color: FontColor_Blacktheme)),
+                        side: BorderSide(color: Color_Blacktheme)),
                     child: Text(
                       (!started) ? "Start" : "Pause",
-                      style: TextStyle(color: FontColor_White),
+                      style: TextStyle(color: Color_White),
                     ),
                   ),
                 ),
@@ -412,7 +407,7 @@ class _StopWatchTimerPageState extends State<StopWatchTimerPage> {
                   width: 8.0,
                 ),
                 IconButton(
-                    color: FontColor_White,
+                    color: Color_White,
                     onPressed: () {
                       addLaps();
                     },
@@ -425,11 +420,11 @@ class _StopWatchTimerPageState extends State<StopWatchTimerPage> {
                   onPressed: () {
                     reset();
                   },
-                  fillColor: FontColor_Blacktheme,
+                  fillColor: Color_Blacktheme,
                   shape: const StadiumBorder(),
                   child: Text(
                     "Reset",
-                    style: TextStyle(color: FontColor_White),
+                    style: TextStyle(color: Color_White),
                   ),
                 ))
               ],

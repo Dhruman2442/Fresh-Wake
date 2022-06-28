@@ -71,7 +71,7 @@ Widget Textfield1(
     controller: controller,
     style: TextStyle(color: color, fontSize: fontSize),
     decoration: InputDecoration(
-        fillColor: FontColor_Darkergrey,
+        fillColor: Color_Darkergrey,
         filled: true,
         enabledBorder: const OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -117,10 +117,10 @@ Widget TextfieldPassword(
     bool obscureText) {
   return TextField(
     controller: controller,
-    style: TextStyle(color: FontColor_White, fontSize: fontSize),
+    style: TextStyle(color: Color_White, fontSize: fontSize),
     obscureText: obscureText,
     decoration: InputDecoration(
-      fillColor: FontColor_Darkergrey,
+      fillColor: Color_Darkergrey,
       filled: true,
       enabledBorder: const OutlineInputBorder(
         borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -227,8 +227,8 @@ Widget Button1(
     child: RaisedButton(
       onPressed: onPressed,
       color: color,
-      child: TextStyle1(
-          text, size, FontColor_White, fontWeight, textAlign, fontStyle),
+      child:
+          TextStyle1(text, size, Color_White, fontWeight, textAlign, fontStyle),
     ),
   );
 }
