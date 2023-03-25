@@ -1,6 +1,7 @@
 import 'package:analog_clock/analog_clock.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:fresh_wake/Alarm/Signup.dart';
 import 'package:fresh_wake/Widgets.dart';
 import 'package:fresh_wake/theme.dart';
 
@@ -60,8 +61,8 @@ class _AlarmPageState extends State<AlarmPage> {
                       width: 190,
                       child: AnalogClock(
                         decoration: BoxDecoration(
-                            border: Border.all(
-                                width: 10, color: Color_Blacktheme),
+                            border:
+                                Border.all(width: 10, color: Color_Blacktheme),
                             color: Color_Blacktheme,
                             shape: BoxShape.circle),
                         // decoration
@@ -156,13 +157,8 @@ class _AlarmPageState extends State<AlarmPage> {
                         }
                         WeekDays[index];
                       },
-                      child: TextStyle1(
-                          "${WeekDays[index]}",
-                          20,
-                         Color_White,
-                          FontWeight.w700,
-                          TextAlign.center,
-                          FontStyle.normal),
+                      child: TextStyle1("${WeekDays[index]}", 20, Color_White,
+                          FontWeight.w700, TextAlign.center, FontStyle.normal),
                     );
                   },
                 ),

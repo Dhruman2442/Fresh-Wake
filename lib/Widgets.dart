@@ -162,11 +162,11 @@ Widget TextfieldPassword(
 }
 
 Widget TextfieldAlarmSet(
-  BuildContext context,
-  Color color,
-  TextEditingController controller,
-  VoidCallback onclick,
-) {
+    BuildContext context,
+    Color color,
+    TextEditingController controller,
+    VoidCallback onclick,
+    ) {
   return Container(
     decoration: BoxDecoration(
         border: Border.all(color: color),
@@ -221,14 +221,14 @@ Widget Button1(
   return Container(
     clipBehavior: Clip.antiAlias,
     decoration:
-        const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(8))),
+    const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(8))),
     height: 50,
     width: MediaQuery.of(context).size.width * 0.95,
-    child: RaisedButton(
+    child: ElevatedButton(
       onPressed: onPressed,
-      color: color,
+      style:ElevatedButton.styleFrom(backgroundColor: color),
       child:
-          TextStyle1(text, size, Color_White, fontWeight, textAlign, fontStyle),
+      TextStyle1(text, size, Color_White, fontWeight, textAlign, fontStyle),
     ),
   );
 }
